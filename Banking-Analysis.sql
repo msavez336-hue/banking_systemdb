@@ -213,3 +213,90 @@ TRUNCATE TABLE TEST_ACCOUNTS;
 SELECT * FROM TEST_ACCOUNTS;
 
 SHOW TABLES LIKE 'TEST_ACCOUNTS';
+
+Section C: Basic Data Retrieval and Filtering 
+
+-- 25. Display all records from CUSTOMERS.
+
+SELECT * FROM CUSTOMERS;
+
+-- 26. Display only CUSTOMERID, FIRSTNAME, LASTNAME and EMAIL from CUSTOMERS.
+
+SELECT CUSTOMERID, FIRSTNAME, LASTNAME, EMAIL
+FROM CUSTOMERS;
+
+-- Q27: Display Customer Full Name Using Alias
+
+SELECT
+    CONCAT(FIRSTNAME, ' ', LASTNAME) AS FULL_NAME
+FROM CUSTOMERS;
+
+ -- Q28: Display Unique Account Types
+
+SELECT DISTINCT ACCOUNTTYPE
+FROM ACCOUNTS;
+
+-- 29. Display accounts having a balance greater than 50,000.
+
+SELECT *
+FROM ACCOUNTS
+WHERE BALANCE > 50000;
+
+-- 30. Display accounts having a balance between 10,000 and 100,000.
+
+SELECT *
+FROM ACCOUNTS
+WHERE BALANCE BETWEEN 10000 AND 100000;
+
+-- 31. Display customers whose first name starts with the letter A.
+
+SELECT *
+FROM customers
+WHERE FIRSTNAME LIKE 'A%';
+
+-- 32. Display customers whose last name ends with the letter N.
+
+SELECT *
+FROM CUSTOMERS
+WHERE LASTNAME LIKE '%N';
+
+-- 33. Display transactions where TRANSACTIONTYPE is either Deposit or Withdrawal using an appropriate filtering operator.
+
+SELECT *
+FROM TRANSACTIONS
+WHERE TRANSACTIONTYPE IN ('Deposit', 'Withdrawal');
+
+-- 34. Display active accounts with a balance greater than 25,000.
+
+SELECT *
+FROM ACCOUNTS
+WHERE ACCOUNTSTATUS = 'ACTIVE'
+AND BALANCE > 25000;
+
+-- 35. Display transactions with amounts greater than 10,000 and transaction dates within a specified date range.
+
+SELECT *
+FROM TRANSACTIONS
+WHERE AMOUNT > 10000
+AND TRANSACTIONDATE BETWEEN '2026-01-01' AND '2026-12-31';
+
+-- 36. Display all customers whose phone numbers match a pattern or length requirement appropriate to your dataset.
+
+SELECT *
+FROM CUSTOMERS
+WHERE LENGTH(PHONE) = 10;
+
+-- 37. Display the top 5 accounts with the highest balances.
+
+SELECT *
+FROM ACCOUNTS
+ORDER BY BALANCE DESC
+LIMIT 5;
+
+-- 38. Display the 10 most recent transactions based on TRANSACTIONDATE.
+
+SELECT *
+FROM TRANSACTIONS 
+ORDER BY TRANSACTIONDATE DESC
+LIMIT 10;
+
